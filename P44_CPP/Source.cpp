@@ -1,10 +1,24 @@
 ﻿#include<iostream>
 #include<Windows.h>
 #include<iomanip>
+#include<algorithm>
 
+#include"Timer.h"
 
 
 using namespace std;
+
+
+enum Color
+{
+	Black = 0, Blue = 1, Green = 2, Cyan = 3, Red = 4, Magenta = 5, Brown = 6, LightGray = 7, DarkGray = 8,
+	LightBlue = 9, LightGreen = 10, LightCyan = 11, LightRed = 12, LightMagenta = 13, Yellow = 14, White = 15
+};
+
+void SetColor(int text, int background)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (WORD)((background << 4) | text));
+}
 
 
 const long double PI = 3.141592653589793238462643383279502884L;
@@ -27,21 +41,187 @@ int main()
 	SetConsoleOutputCP(1251);
 	cout.setf(ios::boolalpha);
 
-	/// 10.05.2025
-
+	/// 14.05.2025
 	srand(time(0));
-	const int size = 10;
-	int arr[size] = { 1, 2, 3, 4, 4, 6, 7, 8, 9, 0 };
-	/*for (size_t i = 0; i < size; i++)
+	const int row = 5, col = 5;
+	int arr[row][col];// = { 2,3,7,8,7,5,3,3, 4 };
+	for (size_t i = 0; i < row; i++)
 	{
-		arr[i] = rand()%10;
-	}*/
+		for (size_t j = 0; j < col; j++)
+		{
+			arr[i][j] = rand() % 80 + 20;
+		}
+	}
 
-	for (size_t i = 0; i < size; i++)
+	int maxel[row], minel[row];
+	for (size_t i = 0; i < row; i++)
 	{
-		cout << arr[i] << " ";
+		int mx = arr[i][0], mi = arr[i][0];
+		for (size_t j = 1; j < col; j++)
+		{
+			if (arr[i][j] > mx)
+			{
+				mx = arr[i][j];
+			}
+
+			if (arr[i][j] < mi)
+			{
+				mi = arr[i][j];
+			}
+
+		}
+		maxel[i] = mx;
+		minel[i] = mi;
+	}
+	
+	for (size_t i = 0; i < row; i++)
+	{
+		for (size_t j = 0; j < col; j++)
+		{
+			if (maxel[i] == arr[i][j])
+			{
+				SetColor(LightRed, Black);
+			}
+			if (minel[i] == arr[i][j])
+			{
+				SetColor(LightGreen, Black);
+			}
+			cout << arr[i][j] << " ";
+			SetColor(7, Black);
+		}
+		cout << endl;
 	}
 	cout << endl;
+
+	
+
+	/*for (size_t i = 0; i < row-1; i++)
+	{
+		for (size_t j = 0; j < row-i-1; j++)
+		{
+			if (maxel[j] < maxel[j + 1]) 
+			{
+				swap(maxel[j], maxel[j + 1]);
+				for (size_t k = 0; k < col; k++)
+				{
+					swap(arr[j][k], arr[j + 1][k]);
+				}
+			}
+		}
+	}*/
+
+	/*SetColor(LightRed, Black);
+	for (size_t i = 0; i < row; i++)
+	{
+		for (size_t j = 0; j < col; j++)
+		{
+			cout << arr[i][j] << " ";
+		}
+		cout << endl;
+	}
+	cout << endl;
+	SetColor(White, Black);*/
+
+	/*for (size_t i = 0; i < row; i++)
+	{
+		for (size_t k = 0; k < col - 1; k++)
+		{
+			for (size_t j = 0; j < col - 1 - k; j++)
+			{
+				if (arr[i][j] > arr[i][j + 1])
+				{
+					swap(arr[i][j], arr[i][j + 1]);
+				}
+			}
+		}
+	}*/
+
+
+	/*for (size_t i = 0; i < row - 1; i++)
+	{
+		for (size_t k = 0; k < row - 1 - i; k++)
+		{
+			if (arr[k][0] < arr[k+1][0])
+			{
+				for (size_t j = 0; j < col; j++)
+				{
+					swap(arr[k][j], arr[k+1][j]);
+				}
+			}
+		}
+	}*/
+
+
+
+	/*for (size_t i = 0; i < row; i++)
+	{
+		for (size_t j = 0; j < col; j++)
+		{
+			cout << arr[i][j] << " ";
+		}
+		cout << endl;
+	}*/
+
+
+	//for (size_t j = 0; j < col; j++)
+	//{
+	//	int sum = 0;
+	//	for (size_t i = 0; i < row; i++)
+	//	{
+	//		sum += arr[i][j];
+	//	}
+	//	cout << sum << " ";
+	//}
+
+	//srand(time(0));
+	//const int size = 10;
+	//int arr[size];// = { 1, 2, 3, 4, 4, 6, 7, 8, 9, 0 };
+
+	//for (size_t i = 0; i < size; i++)
+	//{
+	//	arr[i] = rand() % 10;
+	//	cout << arr[i] << " ";
+	//}
+	//cout << endl;
+
+	//for (size_t i = 0; i < size - 1; i++)
+	//{
+	//	for (size_t j = 0; j < size-1-i; j++)
+	//	{
+	//		if (arr[j] > arr[j + 1])
+	//		{
+	//			swap(arr[j], arr[j + 1]);
+	//		}
+	//	}
+	//}
+
+	//for (size_t i = 0; i < size; i++)
+	//{
+	//	cout << arr[i] << " ";
+	//}
+	//cout << endl;
+
+
+	/// 10.05.2025
+
+	//srand(time(0));
+	//const int size = 1000;
+	////int arr[size]; // = { 1, 2, 3, 4, 4, 6, 7, 8, 9, 0 };
+	//int* arr = new int[size];
+	//for (size_t i = 0; i < size; i++)
+	//{
+	//	arr[i] = rand()%10000;
+	//}
+
+	//Timer t;
+	//sort(arr, arr + 250000);
+	//cout << t.elapsed() << endl;
+
+	//for (size_t i = 0; i < size; i++)
+	//{
+	//	cout << arr[i] << " ";
+	//}
+	//cout << endl;
 
 	/*int a, count = 0;
 	cin >> a;
@@ -140,7 +320,7 @@ int main()
 	/*Дан массив размера N.Поменять местами его минимальный и макси -
 	мальный элементы.*/
 
-	int imax = 0, imin = 0, max = arr[0], min = arr[0];
+	/*int imax = 0, imin = 0, max = arr[0], min = arr[0];
 	for (size_t i = 0; i < size; i++)
 	{
 		if (arr[i] > max) 
@@ -161,7 +341,7 @@ int main()
 	{
 		cout << arr[i] << " ";
 	}
-	cout << endl;
+	cout << endl;*/
 
 
 
