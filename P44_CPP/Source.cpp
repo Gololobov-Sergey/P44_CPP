@@ -4,94 +4,115 @@
 #include<algorithm>
 
 #include"Timer.h"
+#include"func.h"
 
 
 using namespace std;
 
 
-enum Color
-{
-	Black = 0, Blue = 1, Green = 2, Cyan = 3, Red = 4, Magenta = 5, Brown = 6, LightGray = 7, DarkGray = 8,
-	LightBlue = 9, LightGreen = 10, LightCyan = 11, LightRed = 12, LightMagenta = 13, Yellow = 14, White = 15
-};
-
-void SetColor(int text, int background)
-{
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (WORD)((background << 4) | text));
-}
-
-
-const long double PI = 3.141592653589793238462643383279502884L;
-
-
-enum DayOfWeek
-{
-	Monday = 1, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, NoDay = -1
-};
-
-
-enum MonthOfYear
-{
-	January = 1, February, March, April, May, June, July, August, September, October, November, December
-};
 
 int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	cout.setf(ios::boolalpha);
+	
+	/// 17.05.2025
+
+	srand(time(0));
+	const int size = 10;
+	int arr[size], temp[size];
+
+	fillArray(arr, size);
+	printArray(arr, size);
+
+	hill(arr, temp, size);
+	printArray(temp, size);
+
+	/*starLine(20, '#');
+	starLine(30);
+	starLine();
+
+	cout << sum(2, 3, 4) << endl;
+	cout << sum(2, 3) << endl;*/
+
+
+	/*cout << endl;
+	int count = 0;
+	for (size_t i = 0; i < size; i++)
+	{
+		if (isEven(arr[i]))
+		{
+			count++;
+		}
+	}*/
+
+	//cout << count << endl;
+
+	//cout << sqrt(25) << endl;
+
+	/*int a, b;
+	
+	starLine();
+
+	int res = sum(3, 6);
+	cout << res << endl;
+
+	cout << sum(3, 5) << endl;*/
+
+	//cout << avg(3, 4, 6) << endl;
 
 	/// 14.05.2025
-	srand(time(0));
-	const int row = 5, col = 5;
-	int arr[row][col];// = { 2,3,7,8,7,5,3,3, 4 };
-	for (size_t i = 0; i < row; i++)
-	{
-		for (size_t j = 0; j < col; j++)
-		{
-			arr[i][j] = rand() % 80 + 20;
-		}
-	}
+	//srand(time(0));
+	//const int row = 5, col = 5;
+	//int arr[row][col];// = { 2,3,7,8,7,5,3,3, 4 };
+	//for (size_t i = 0; i < row; i++)
+	//{
+	//	for (size_t j = 0; j < col; j++)
+	//	{
+	//		arr[i][j] = rand() % 80 + 20;
+	//	}
+	//}
 
-	int maxel[row], minel[row];
-	for (size_t i = 0; i < row; i++)
-	{
-		int mx = arr[i][0], mi = arr[i][0];
-		for (size_t j = 1; j < col; j++)
-		{
-			if (arr[i][j] > mx)
-			{
-				mx = arr[i][j];
-			}
+	//int maxel[row], minel[row];
+	//for (size_t i = 0; i < row; i++)
+	//{
+	//	int mx = arr[i][0], mi = arr[i][0];
+	//	for (size_t j = 1; j < col; j++)
+	//	{
+	//		if (arr[i][j] > mx)
+	//		{
+	//			mx = arr[i][j];
+	//		}
 
-			if (arr[i][j] < mi)
-			{
-				mi = arr[i][j];
-			}
+	//		if (arr[i][j] < mi)
+	//		{
+	//			mi = arr[i][j];
+	//		}
 
-		}
-		maxel[i] = mx;
-		minel[i] = mi;
-	}
-	
-	for (size_t i = 0; i < row; i++)
-	{
-		for (size_t j = 0; j < col; j++)
-		{
-			if (maxel[i] == arr[i][j])
-			{
-				SetColor(LightRed, Black);
-			}
-			if (minel[i] == arr[i][j])
-			{
-				SetColor(LightGreen, Black);
-			}
-			cout << arr[i][j] << " ";
-			SetColor(7, Black);
-		}
-		cout << endl;
-	}
-	cout << endl;
+	//	}
+	//	maxel[i] = mx;
+	//	minel[i] = mi;
+	//}
+	//
+	//for (size_t i = 0; i < row; i++)
+	//{
+	//	for (size_t j = 0; j < col; j++)
+	//	{
+	//		if (maxel[i] == arr[i][j])
+	//		{
+	//			SetColor(LightRed, Black);
+	//		}
+	//		if (minel[i] == arr[i][j])
+	//		{
+	//			SetColor(LightGreen, Black);
+	//		}
+	//		cout << arr[i][j] << " ";
+	//		SetColor(7, Black);
+	//	}
+	//	cout << endl;
+	//}
+	//cout << endl;
 
 	
 
