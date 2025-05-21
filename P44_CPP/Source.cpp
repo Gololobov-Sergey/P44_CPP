@@ -2,6 +2,7 @@
 #include<Windows.h>
 #include<iomanip>
 #include<algorithm>
+#include<conio.h>
 
 #include"Timer.h"
 #include"func.h"
@@ -16,18 +17,80 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	cout.setf(ios::boolalpha);
-	
+
+	/// 21.05.2025
+
+	/*srand(time(0));
+	const size_t size = 10;
+	char arr[size];
+
+	fillArray(arr, size, 'A', 'X');
+	printArray(arr, size);*/
+
+
+	CONSOLE_CURSOR_INFO curs = { 0 };
+	curs.dwSize = sizeof(curs);
+	curs.bVisible = FALSE;
+	::SetConsoleCursorInfo(::GetStdHandle(STD_OUTPUT_HANDLE), &curs);
+
+
+	int x = 0, y = 0;
+	gotoxy(x, y);
+	cout << 0;
+	while (true)
+	{
+
+		if (_kbhit())
+		{
+			gotoxy(x, y);
+			cout << " ";
+
+			char c = _getch();
+			switch (c)
+			{
+			case UP:
+				if (y > 0) y--;
+				break;
+			case DOWN:
+				if (y < 20) y++;
+				break;
+			case LEFT:
+				if (x > 0) x--;
+				break;
+			case RIGHT:
+				if (x < 80) x++;
+				break;
+			case ESC:
+				break;
+			default:
+				break;
+			}
+			gotoxy(x, y);
+			cout << 0;
+		}
+	}
+
+
+
+
+	/*auto a = 9.f;
+	int b;
+
+	cout << sum(36, 57.3, 'a') << endl;
+
+	decltype (a + b) c;*/
+
 	/// 17.05.2025
 
-	srand(time(0));
+	/*srand(time(0));
 	const int size = 10;
 	int arr[size], temp[size];
 
 	fillArray(arr, size);
-	printArray(arr, size);
+	printArray(arr, size);*/
 
-	hill(arr, temp, size);
-	printArray(temp, size);
+	/*hill(arr, temp, size);
+	printArray(temp, size);*/
 
 	/*starLine(20, '#');
 	starLine(30);
@@ -52,7 +115,7 @@ int main()
 	//cout << sqrt(25) << endl;
 
 	/*int a, b;
-	
+
 	starLine();
 
 	int res = sum(3, 6);
@@ -114,13 +177,13 @@ int main()
 	//}
 	//cout << endl;
 
-	
+
 
 	/*for (size_t i = 0; i < row-1; i++)
 	{
 		for (size_t j = 0; j < row-i-1; j++)
 		{
-			if (maxel[j] < maxel[j + 1]) 
+			if (maxel[j] < maxel[j + 1])
 			{
 				swap(maxel[j], maxel[j + 1]);
 				for (size_t k = 0; k < col; k++)
@@ -248,7 +311,7 @@ int main()
 	cin >> a;
 	for (size_t i = 0; i < size; i++)
 	{
-		if (arr[i] == a) 
+		if (arr[i] == a)
 		{
 			count++;
 		}
@@ -278,7 +341,7 @@ int main()
 	/*int ii = 0, dob = arr[0] * arr[1];
 	for (size_t i = 1; i < size-1; i++)
 	{
-		if (arr[i] * arr[i + 1] < dob) 
+		if (arr[i] * arr[i + 1] < dob)
 		{
 			dob = arr[i] * arr[i + 1];
 			ii = i;
@@ -327,7 +390,7 @@ int main()
 	/*int flag = 0;
 	for (size_t i = 0; i < size-1; i++)
 	{
-		if (arr[i] % 2 == arr[i + 1] % 2) 
+		if (arr[i] % 2 == arr[i + 1] % 2)
 		{
 			flag = i+1;
 			break;
@@ -344,7 +407,7 @@ int main()
 	/*int imax = 0, imin = 0, max = arr[0], min = arr[0];
 	for (size_t i = 0; i < size; i++)
 	{
-		if (arr[i] > max) 
+		if (arr[i] > max)
 		{
 			max = arr[i];
 			imax = i;

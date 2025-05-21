@@ -4,6 +4,20 @@
 
 using namespace std;
 
+enum DIRECTION
+{
+	UP = 72, DOWN = 80, LEFT = 75, RIGHT = 77, ESC = 27
+};
+
+
+void gotoxy(int x, int y)
+{
+	COORD coord;
+	coord.X = x;
+	coord.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
 enum Color
 {
 	Black = 0, Blue = 1, Green = 2, Cyan = 3, Red = 4, Magenta = 5, Brown = 6, LightGray = 7, DarkGray = 8,
@@ -45,11 +59,10 @@ void starLine(int count = 20, char symbol = '*')
 	cout << endl;
 }
 
-
-int sum(int a, int b)
+template<class T1, class T2, class T3>
+auto sum(T1 a, T2 b, T3 c) -> decltype(a + c)
 {
-	int c = a + b;
-	return c;
+	return a + b + c;
 }
 
 
@@ -70,15 +83,33 @@ bool isEven(int a)
 	return a % 2 == 0;
 }
 
-void fillArray(int arr[], int size, int min = 0, int max = 9)
+template<class T>
+void fillArray(T arr[], size_t size, T min = 0, T max = 9)
 {
-	for (size_t i = 0; i < size; i++)
+	for (auto i = 0; i < size; i++)
 	{
 		arr[i] = rand() % (max - min + 1) + min;
 	}
 }
 
-void printArray(int arr[], int size)
+void fillArray(float arr[], size_t size, float min = 0, float max = 9)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		float f = rand() % 10000 / 10000.;
+		arr[i] = rand() % (int)(max - min + 1) + min + f;
+	}
+	
+}
+
+/// <summary>
+/// ¬ив≥д масиву на екран
+/// </summary>
+/// <typeparam name="T">“ип масиву</typeparam>
+/// <param name="arr">- масив</param>
+/// <param name="size">- розм≥р</param>
+template<class T>
+void printArray(T arr[], size_t size)
 {
 	for (size_t i = 0; i < size; i++)
 	{
@@ -87,8 +118,18 @@ void printArray(int arr[], int size)
 	cout << endl;
 }
 
+void printArray(char arr[], size_t size)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		cout << arr[i] << ", ";
+	}
+	cout << endl;
+}
 
-void bubbleSort(int arr[], int size)
+
+template<class T>
+void bubbleSort(T arr[], size_t size)
 {
 	for (size_t i = 0; i < size-1; i++)
 	{
@@ -100,7 +141,7 @@ void bubbleSort(int arr[], int size)
 	}
 }
 
-void hill(int arr[], int temp[], int size)
+void hill(int arr[], int temp[], size_t size)
 {
 	bubbleSort(arr, size);
 	for (size_t i = 0; i < size; i++)
@@ -115,4 +156,54 @@ void hill(int arr[], int temp[], int size)
 		}
 	}
 
+}
+
+
+template<class T>
+T sumArray(T arr[], size_t size)
+{
+	T sum = 0;
+	for (size_t i = 0; i < size; i++)
+	{
+		sum += arr[i];
+	}
+	return sum;
+}
+
+template<class T>
+int findArray(T arr[], size_t size, T key)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		if (arr[i] == key)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+
+template<class T>
+int rfindArray(T arr[], size_t size, T key)
+{
+	for (int i = size - 1; i >= 0; i--)
+	{
+		if (arr[i] == key)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+template<class T>
+double avgArray(T arr[], size_t size)
+{
+	T sum = 0;
+	for (size_t i = 0; i < size; i++)
+	{
+		sum += arr[i];
+	}
+	return (double)sum / size;
 }
