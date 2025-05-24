@@ -109,7 +109,7 @@ void fillArray(float arr[], size_t size, float min = 0, float max = 9)
 /// <param name="arr">- масив</param>
 /// <param name="size">- розмір</param>
 template<class T>
-void printArray(T arr[], size_t size)
+void printArray(T* arr, size_t size)
 {
 	for (size_t i = 0; i < size; i++)
 	{
@@ -118,7 +118,7 @@ void printArray(T arr[], size_t size)
 	cout << endl;
 }
 
-void printArray(char arr[], size_t size)
+void printArray(char* arr, size_t size)
 {
 	for (size_t i = 0; i < size; i++)
 	{
@@ -129,7 +129,7 @@ void printArray(char arr[], size_t size)
 
 
 template<class T>
-void bubbleSort(T arr[], size_t size)
+void bubbleSort(T* arr, size_t size)
 {
 	for (size_t i = 0; i < size-1; i++)
 	{
@@ -207,3 +207,21 @@ double avgArray(T arr[], size_t size)
 	}
 	return (double)sum / size;
 }
+
+template<class T>
+T* addElemArray(T* arr, size_t size, T elem)
+{
+	T* temp = new T[size + 1];
+	for (size_t i = 0; i < size; i++)
+	{
+		temp[i] = arr[i];
+	}
+	temp[size] = elem;
+	delete arr;
+	
+	return temp;
+}
+
+// delElemArray(arr, size)
+// insertArray(arr, size, elem, pos)
+// removeArray(arr, size, pos)

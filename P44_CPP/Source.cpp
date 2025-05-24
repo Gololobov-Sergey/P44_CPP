@@ -18,6 +18,118 @@ int main()
 	SetConsoleOutputCP(1251);
 	cout.setf(ios::boolalpha);
 
+
+	/// 24.05.2025
+
+	//int arr[260000];
+
+	//int a[10];
+
+	int size = 10;
+	////cin >> size;
+	int* p = new int[size];
+	fillArray(p, size);
+	printArray(p, size);
+	
+	p = addElemArray(p, size++, 888);
+
+	/*int* temp = new int[size + 1];
+	for (size_t i = 0; i < size; i++)
+	{
+		temp[i] = p[i];
+	}
+	temp[size] = 999;
+	delete p;
+	size++;
+	p = temp;*/
+	
+
+	printArray(p, size);
+
+	//p = new int;
+
+	//delete p;
+
+	//p = new int;
+
+	/*char a = 5;
+	char* p = &a;
+	cout << sizeof(a) << endl;
+	cout << sizeof(p) << endl;*/
+
+
+
+	//int a[] = { 101,2,3,4,5 };
+	//for (size_t i = 0; i < 5; i++)
+	//{
+	//	cout << *(a + i) << " "; // *(a + i) = a[i]
+	//}
+	//cout << endl;
+
+	//for (int* i = a; i != &a[5]; i++)
+	//{
+	//	cout << *i << " ";
+	//}
+	//cout << endl;
+
+	//int* b = a;
+	//b++;
+
+	//printArray(a, 5);
+
+	/*cout << *(a + 0) << endl;
+	cout << *(a + 1) << endl;
+	cout << *(a + 2) << endl;
+	cout << *(a + 3) << endl;
+	cout << *(a + 4) << endl;*/
+
+
+
+	/*int a = 5, b = 55;
+	float c = 3.14;
+
+	int* pa = &a;
+	int* pb = &b;
+	float* pc = &c;
+
+	cout << (pa > pb) << endl;
+	cout << (pa < pb) << endl;
+	cout << (pa == pb) << endl;
+	cout << (pa != pb) << endl;
+	cout << (pc == nullptr) << endl;
+	cout << (pc != nullptr) << endl;
+	if (!pc)
+	{
+
+	}*/
+
+	// + - ++ -- 
+	// == != 
+
+	//cout << pa << endl;
+	//cout << &c << endl;
+	//pa = pa + 5; // pa = pa + type * n
+	//cout << pa << endl;
+	//cout << *pa << endl;
+
+	/*cout << typeid(a).name() << endl;
+	cout << a << endl;
+	cout << sizeof(a) << endl;
+	cout << &a << endl;*/
+
+
+
+	/*cout << pa << endl;
+	cout << *pa << endl;
+
+	*pa = 999;
+
+	cout << a << endl;
+
+	pa = &c;
+	*pa = 111;*/
+
+
 	/// 21.05.2025
 
 	/*srand(time(0));
@@ -28,7 +140,7 @@ int main()
 	printArray(arr, size);*/
 
 
-	CONSOLE_CURSOR_INFO curs = { 0 };
+	/*CONSOLE_CURSOR_INFO curs = { 0 };
 	curs.dwSize = sizeof(curs);
 	curs.bVisible = FALSE;
 	::SetConsoleCursorInfo(::GetStdHandle(STD_OUTPUT_HANDLE), &curs);
@@ -68,7 +180,7 @@ int main()
 			gotoxy(x, y);
 			cout << 0;
 		}
-	}
+	}*/
 
 
 
