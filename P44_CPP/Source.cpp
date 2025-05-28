@@ -23,20 +23,29 @@ int main()
 	size_t size2 = 10;
 	int* a1 = new int[size1];
 	fillArray(a1, size1);
-	int* a2 = new int[size2];
-	fillArray(a2, size2);
+	//int* a2 = new int[size2];
+	//fillArray(a2, size2);
 	printArray(a1, size1);
-	printArray(a2, size2);
+	//printArray(a2, size2);
 
-	int* a3 = nullptr;
-	size_t size3 = 0;
+	//int* a3 = nullptr;
+	//size_t size3 = 0;
 
 	//colabArrays(a1, size1, a2, size2, a3, size3);
-	
-	
-	printArray(a3, size3);
+	/*for (size_t i = 0; i < size1; i++)
+	{
+		if (findArray(a2, size2, a1[i]) != -1 && findArray(a3, size3, a1[i]) == -1)
+			addElemArray(a3, size3, a1[i]);
+	}*/
+	//printArray(a3, size3);
 
+	//delValueArray(a1, size1, false);
+	//printArray(a1, size1);
 
+	int s, d;
+	bublik(a1, size1, s, d);
+	cout << s << endl;
+	cout << d << endl;
 
 
 	/*int a = 5, b = 4;

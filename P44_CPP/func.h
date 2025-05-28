@@ -259,3 +259,68 @@ void colabArrays(T* arr1, size_t size1, T* arr2, size_t size2, T*& arr3, size_t&
 		arr3[i + size1] = arr2[i];
 	}
 }
+
+template<class T>
+void deleteElemArray(T*& arr, size_t& size)
+{
+	T* temp = new T[size - 1];
+	for (size_t i = 0; i < size-1; i++)
+	{
+		temp[i] = arr[i];
+	}
+	delete arr;
+	size--;
+	arr = temp;
+}
+
+void delValueArray(int*& arr, size_t& size, bool isEven = true)
+{
+	size_t newSize = 0;
+	int* temp = nullptr;
+	if (isEven)
+	{
+		for (size_t i = 0; i < size; i++)
+		{
+			if (arr[i] % 2 == 0)
+				newSize++;
+		}
+		temp = new int[newSize];
+		newSize = 0;
+		for (size_t i = 0; i < size; i++)
+		{
+			if (arr[i] % 2 == 0)
+				temp[newSize++] = arr[i];
+		}
+	}
+	else
+	{
+		for (size_t i = 0; i < size; i++)
+		{
+			if (arr[i] % 2 != 0)
+				newSize++;
+		}
+		temp = new int[newSize];
+		newSize = 0;
+		for (size_t i = 0; i < size; i++)
+		{
+			if (arr[i] % 2 != 0)
+				temp[newSize++] = arr[i];
+		}
+	}
+
+	delete arr;
+	size = newSize;
+	arr = temp;
+}
+
+template<class T>
+void bublik(T*& arr, size_t size, int& sum, int& dobutok)
+{
+	sum = 0, dobutok = 1;
+	for (size_t i = 0; i < size; i++)
+	{
+		sum += arr[i];
+		dobutok *= arr[i];
+	}
+
+}
