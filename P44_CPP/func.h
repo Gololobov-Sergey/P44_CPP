@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include<iostream>
 #include<Windows.h>
 
@@ -103,11 +103,11 @@ void fillArray(float arr[], size_t size, float min = 0, float max = 9)
 }
 
 /// <summary>
-/// Вивід масиву на екран
+/// Р’РёРІС–Рґ РјР°СЃРёРІСѓ РЅР° РµРєСЂР°РЅ
 /// </summary>
-/// <typeparam name="T">Тип масиву</typeparam>
-/// <param name="arr">- масив</param>
-/// <param name="size">- розмір</param>
+/// <typeparam name="T">РўРёРї РјР°СЃРёРІСѓ</typeparam>
+/// <param name="arr">- РјР°СЃРёРІ</param>
+/// <param name="size">- СЂРѕР·РјС–СЂ</param>
 template<class T>
 void printArray(T* arr, size_t size)
 {
@@ -209,7 +209,7 @@ double avgArray(T arr[], size_t size)
 }
 
 template<class T>
-T* addElemArray(T* arr, size_t size, T elem)
+void addElemArray(T*& arr, size_t& size, T elem)
 {
 	T* temp = new T[size + 1];
 	for (size_t i = 0; i < size; i++)
@@ -218,10 +218,44 @@ T* addElemArray(T* arr, size_t size, T elem)
 	}
 	temp[size] = elem;
 	delete arr;
-	
-	return temp;
+	size++;
+	arr = temp;
 }
+
+
+void my_swap(int& a, int& b)
+{
+	int t = a;
+	a = b;
+	b = t;
+
+	cout << a << " " << b << endl;
+}
+
+//void newArray(int*& arr, int size)
+//{
+//	arr = new int[size];
+//	fillArray(arr, size);
+//	printArray(arr, size);
+//}
+
 
 // delElemArray(arr, size)
 // insertArray(arr, size, elem, pos)
 // removeArray(arr, size, pos)
+
+
+template<class T>
+void colabArrays(T* arr1, size_t size1, T* arr2, size_t size2, T*& arr3, size_t& size3)
+{
+	size3 = size1 + size2;
+	arr3 = new T[size1 + size2];
+	for (size_t i = 0; i < size1; i++)
+	{
+		arr3[i] = arr1[i];
+	}
+	for (size_t i = 0; i < size2; i++)
+	{
+		arr3[i + size1] = arr2[i];
+	}
+}

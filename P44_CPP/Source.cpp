@@ -17,6 +17,37 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	cout.setf(ios::boolalpha);
+	srand(time(0));
+
+	size_t size1 = 10;
+	size_t size2 = 10;
+	int* a1 = new int[size1];
+	fillArray(a1, size1);
+	int* a2 = new int[size2];
+	fillArray(a2, size2);
+	printArray(a1, size1);
+	printArray(a2, size2);
+
+	int* a3 = nullptr;
+	size_t size3 = 0;
+
+	//colabArrays(a1, size1, a2, size2, a3, size3);
+	
+	
+	printArray(a3, size3);
+
+
+
+
+	/*int a = 5, b = 4;
+
+	my_swap(a, b);
+
+	cout << a << " " << b << endl;*/
+	
+	/*int a = 5;        int b = 4;
+	int* p = &a;      int& r = b;
+	*p = 99;          r = 99;*/
 
 
 	/// 24.05.2025
@@ -25,13 +56,22 @@ int main()
 
 	//int a[10];
 
-	int size = 10;
-	////cin >> size;
-	int* p = new int[size];
-	fillArray(p, size);
-	printArray(p, size);
+
 	
-	p = addElemArray(p, size++, 888);
+
+
+
+
+
+	//size_t size = 10;
+	//////cin >> size;
+	//int* p = new int[size];
+	//fillArray(p, size);
+	//printArray(p, size);
+	//
+	//addElemArray(p, size, 888);
+
+	//printArray(p, size);
 
 	/*int* temp = new int[size + 1];
 	for (size_t i = 0; i < size; i++)
@@ -42,9 +82,9 @@ int main()
 	delete p;
 	size++;
 	p = temp;*/
-	
 
-	printArray(p, size);
+
+	//printArray(p, size);
 
 	//p = new int;
 
