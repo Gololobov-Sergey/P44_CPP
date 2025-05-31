@@ -19,13 +19,95 @@ int main()
 	cout.setf(ios::boolalpha);
 	srand(time(0));
 
-	size_t size1 = 10;
-	size_t size2 = 10;
-	int* a1 = new int[size1];
-	fillArray(a1, size1);
+	//31.05.2025
+
+	size_t M = 10, N = 10;
+
+	int* arr1 = new int[M]; fillArray(arr1, M); printArray(arr1, M);
+	int* arr2 = new int[N]; fillArray(arr2, N); printArray(arr2, N);
+
+	double(*method[])(int*, size_t) = {minArray, maxArray, avgArray};
+	cout << "1,2,3" << endl;
+	int ind;
+	cin >> ind;
+
+	cout << Action(arr1, M, arr2, N, method[ind - 1]) << endl;
+
+
+
+	//int bullet[3] = { 50,50,50 };
+
+	//void(*shoot[])(int*) = {gun, mashineGun, arrow};
+
+	//int i = 0;
+	//while (true)
+	//{
+	//	/*shoot = selectWeapon(bullet);
+	//	shoot(bullet);*/
+
+	//	if (_kbhit())
+	//	{
+	//		char c = _getch();
+	//		switch (c)
+	//		{
+	//		case 'q':
+	//			i++;
+	//			break;
+	//		
+	//		case ' ':
+	//			shoot[i % 3](bullet);
+	//			break;
+	//		default:
+	//			break;
+	//		}
+	//	}
+	//	
+
+	//	//Sleep(1000);
+	//}
+
+
+
+
+	//int a = 5, b = 9;
+	//const int* p = &a;
+	//a = 55;
+	//*p = 33;
+	//p = &b;
+
+	//int* const p = &a;
+	//a = 99;
+	//*p = 88;
+	//p = &b;
+
+	//const int* const p = &a;
+
+	//const int& r = a;
+	//r = 555;
+
+	// type(*name)(parm)
+	/*void(*name)() = hello;
+	name();
+	name = hello1;
+	name();*/
+
+	/*size_t size = 20;
+	int* a = new int[size];
+	fillArray(a, size, 10, 1000);
+	printArray(a, size);
+	bubbleSort(a, size, lastNumber);
+	printArray(a, size);*/
+	
+	
+	
+	
+	//size_t size1 = 10;
+	//size_t size2 = 10;
+	//int* a1 = new int[size1];
+	//fillArray(a1, size1);
 	//int* a2 = new int[size2];
 	//fillArray(a2, size2);
-	printArray(a1, size1);
+	//printArray(a1, size1);
 	//printArray(a2, size2);
 
 	//int* a3 = nullptr;
@@ -42,10 +124,10 @@ int main()
 	//delValueArray(a1, size1, false);
 	//printArray(a1, size1);
 
-	int s, d;
+	/*int s, d;
 	bublik(a1, size1, s, d);
 	cout << s << endl;
-	cout << d << endl;
+	cout << d << endl;*/
 
 
 	/*int a = 5, b = 4;

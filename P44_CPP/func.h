@@ -99,7 +99,7 @@ void fillArray(float arr[], size_t size, float min = 0, float max = 9)
 		float f = rand() % 10000 / 10000.;
 		arr[i] = rand() % (int)(max - min + 1) + min + f;
 	}
-	
+
 }
 
 /// <summary>
@@ -128,16 +128,50 @@ void printArray(char* arr, size_t size)
 }
 
 
-template<class T>
-void bubbleSort(T* arr, size_t size)
+bool asc(int a, int b)
 {
-	for (size_t i = 0; i < size-1; i++)
+	return a > b;
+}
+
+bool desc(int a, int b)
+{
+	return a < b;
+}
+
+bool lastNumber(int a, int b)
+{
+	if (a % 10 > b % 10)
 	{
-		for (size_t j = 0; j < size-1-i; j++)
+		return true;
+	}
+	else if (a % 10 < b % 10)
+	{
+		return false;
+	}
+	else
+	{
+		return desc(a, b);
+	}
+}
+
+
+
+template<class T>
+void bubbleSort(T* arr, size_t size, bool(*method)(T, T) = asc)
+{
+	for (size_t i = 0; i < size - 1; i++)
+	{
+		bool flag = false;
+		for (size_t j = 0; j < size - 1 - i; j++)
 		{
-			if (arr[j] > arr[j + 1])
+			if (method(arr[j], arr[j + 1]))
+			{
 				swap(arr[j], arr[j + 1]);
+				flag = true;
+			}
 		}
+		if (!flag)
+			break;
 	}
 }
 
@@ -146,13 +180,13 @@ void hill(int arr[], int temp[], size_t size)
 	bubbleSort(arr, size);
 	for (size_t i = 0; i < size; i++)
 	{
-		if(i % 2 == 0)
+		if (i % 2 == 0)
 		{
-			temp[i/2] = arr[i];
+			temp[i / 2] = arr[i];
 		}
 		else
 		{
-			temp[size - 1 - i/2] = arr[i];
+			temp[size - 1 - i / 2] = arr[i];
 		}
 	}
 
@@ -198,7 +232,7 @@ int rfindArray(T arr[], size_t size, T key)
 }
 
 template<class T>
-double avgArray(T arr[], size_t size)
+double avgArray(T* arr, size_t size)
 {
 	T sum = 0;
 	for (size_t i = 0; i < size; i++)
@@ -207,6 +241,52 @@ double avgArray(T arr[], size_t size)
 	}
 	return (double)sum / size;
 }
+
+
+template<class T>
+T maxArray(T* arr, size_t size)
+{
+	T max = arr[0];
+	for (size_t i = 0; i < size; i++)
+	{
+		if (arr[i] > max)
+		{
+			max = arr[i];
+		}
+	}
+	return max;
+}
+
+
+double maxArray(int* arr, size_t size)
+{
+	int max = arr[0];
+	for (size_t i = 0; i < size; i++)
+	{
+		if (arr[i] > max)
+		{
+			max = arr[i];
+		}
+	}
+	return max;
+}
+
+double minArray(int* arr, size_t size)
+{
+	int min = arr[0];
+	for (size_t i = 0; i < size; i++)
+	{
+		if (arr[i] < min)
+		{
+			min = arr[i];
+		}
+	}
+	return min;
+}
+
+
+
+
 
 template<class T>
 void addElemArray(T*& arr, size_t& size, T elem)
@@ -246,7 +326,7 @@ void my_swap(int& a, int& b)
 
 
 template<class T>
-void colabArrays(T* arr1, size_t size1, T* arr2, size_t size2, T*& arr3, size_t& size3)
+void margeArrays(T* arr1, size_t size1, T* arr2, size_t size2, T*& arr3, size_t& size3)
 {
 	size3 = size1 + size2;
 	arr3 = new T[size1 + size2];
@@ -260,11 +340,21 @@ void colabArrays(T* arr1, size_t size1, T* arr2, size_t size2, T*& arr3, size_t&
 	}
 }
 
+
+double Action(int* arr1, size_t size1, int* arr2, size_t size2, double(*method)(int*, size_t))
+{
+	size_t size3;
+	int* arr3 = nullptr;
+	margeArrays(arr1, size1, arr2, size2, arr3, size3);
+
+	return method(arr3, size3);
+}
+
 template<class T>
 void deleteElemArray(T*& arr, size_t& size)
 {
 	T* temp = new T[size - 1];
-	for (size_t i = 0; i < size-1; i++)
+	for (size_t i = 0; i < size - 1; i++)
 	{
 		temp[i] = arr[i];
 	}
@@ -323,4 +413,57 @@ void bublik(T*& arr, size_t size, int& sum, int& dobutok)
 		dobutok *= arr[i];
 	}
 
+}
+
+
+void hello()
+{
+	cout << "Hello" << endl;
+}
+
+void hello1()
+{
+	cout << "Hello1" << endl;
+}
+
+
+void gun(int* bullet)
+{
+	cout << "->" << endl;
+	bullet[0]--;
+}
+
+void mashineGun(int* bullet)
+{
+	cout << "-> -> -> -> ->" << endl;
+	bullet[1] -= 5;
+}
+
+void arrow(int* bullet)
+{
+	cout << ">>------>" << endl;
+	bullet[2]--;
+}
+
+
+int maxArray(int* arr, int size)
+{
+	int imax = 0;
+	for (size_t i = 0; i < size; i++)
+	{
+		if (arr[i] > arr[imax])
+		{
+			imax = i;
+		}
+	}
+	return imax;
+}
+
+void(*selectWeapon(int* bullet))(int*)
+{
+	void(*weapon[])(int*) = { gun, mashineGun, arrow };
+
+	int ind = maxArray(bullet, 3);
+
+	return weapon[ind];
 }
