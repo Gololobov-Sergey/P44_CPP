@@ -1,4 +1,5 @@
-﻿#include<iostream>
+﻿//#define _CRT_SECURE_NO_WARNINGS
+#include<iostream>
 #include<Windows.h>
 #include<iomanip>
 #include<algorithm>
@@ -19,9 +20,74 @@ int main()
 	cout.setf(ios::boolalpha);
 	srand(time(0));
 
+	//04.06.2025
+
+	//char str[] = "Hello"; // '\0'
+	//int arr[] = { 1,2,3 };
+
+	//cout << arr << endl;
+	//cout << str + 2 << endl;
+
+	//cout << lenStr("mama") << endl;
+	//cout << lenStr(str) << endl;
+	//cout << strlen("mama") << endl;
+
+	char str[8000];
+	cin.getline(str, 8000);
+	int len1 = strlen(str);
+	char* st1 = new char[len1 + 1];
+	strcpy_s(st1, len1+1, str);
+
+	cin.getline(str, 8000);
+	int len2 = strlen(str);
+	char* st2 = new char[len2 + 1];
+	strcpy_s(st2, len2 + 1, str);
+
+	
+	//strncpy_s(st1, len1, st2, 10);
+	
+	//strcat_s(st1, len2 + len1 + 1, st2);
+	//strncat_s(st1, len2 + len1 + 1, st2, 5);
+	
+	//cout << strcmp(st1, st2) << endl;
+	//cout << _stricmp(st1, st2) << endl;
+	//cout << strncmp(st1, st2, 3) << endl;
+	//cout << strnicmp(st1, st2, 3) << endl;
+	
+	//_strlwr_s(st1, len1+1);
+	//_strupr_s(st1, len1+1);
+	
+	//char* t = strchr(st1, 'a');
+	/*char* t = strrchr(st1, 'a');
+	if (t)
+		cout << t << endl;
+	cout << t - st1 << endl;*/
+	
+	/*char* t = strstr(st1, st2);
+	if(t)
+		cout << t << endl;*/
+
+
+	//cout << islower('A') << endl;
+
+	//_strset_s(st1, len1+1, '\0');
+	
+	//int a = atoi(st1);
+	//long b = atol(st1);
+	//double c = atof(st1);
+	
+	//_itoa_s(364573246, st1, len1+1, 36);
+	
+	cout << st1 << endl;
+
+
+	char* t = deleteAllSymbol("mama lkj;lkaj l;akj a;lkja ;lkaja l", 'a');
+	cout << t << endl;
+
+
 	//31.05.2025
 
-	size_t M = 10, N = 10;
+	/*size_t M = 10, N = 10;
 
 	int* arr1 = new int[M]; fillArray(arr1, M); printArray(arr1, M);
 	int* arr2 = new int[N]; fillArray(arr2, N); printArray(arr2, N);
@@ -31,7 +97,7 @@ int main()
 	int ind;
 	cin >> ind;
 
-	cout << Action(arr1, M, arr2, N, method[ind - 1]) << endl;
+	cout << Action(arr1, M, arr2, N, method[ind - 1]) << endl;*/
 
 
 

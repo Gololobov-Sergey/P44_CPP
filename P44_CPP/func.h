@@ -467,3 +467,52 @@ void(*selectWeapon(int* bullet))(int*)
 
 	return weapon[ind];
 }
+
+int lenStr(const char* str)
+{
+	int len = 0;
+	while (str[len] != '\0')
+		len++;
+	return len;
+}
+
+char* deleteSymbol(const char* st, int pos)
+{
+	int len = strlen(st);
+	if (pos > len || pos < 0)
+		return nullptr;
+
+	char* t = new char[len];
+	for (size_t i = 0; i < pos; i++)
+	{
+		t[i] = st[i];
+	}
+	for (size_t i = pos + 1 ; i < len+1; i++)
+	{
+		t[i-1] = st[i];
+	}
+	return t;
+}
+
+char* deleteAllSymbol(const char* st, char symbol)
+{
+	int count = 0;
+	int len = strlen(st);
+	for (size_t i = 0; i <= len; i++)
+	{
+		if (st[i] == symbol)
+			count++;
+	}
+
+	char* t = new char[len + 1 - count];
+	int k = 0;
+	for (size_t i = 0; i <= len+1; i++)
+	{
+		if (st[i] != symbol) 
+		{
+			t[k++] = st[i];
+		}
+	}
+
+	return t;
+}
