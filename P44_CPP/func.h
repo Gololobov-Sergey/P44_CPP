@@ -516,3 +516,98 @@ char* deleteAllSymbol(const char* st, char symbol)
 
 	return t;
 }
+
+int countWords(const char* st)
+{
+	int i = 0;
+	int count = 0;
+	while (st[i] != '\0')
+	{
+		if (st[i] != ' ' && (st[i + 1] == ' ' || st[i + 1] == '\0'))
+			count++;
+		i++;
+	}
+	return count;
+}
+
+
+char* replace_str(const char* st, const char* _old, const char* _new)
+{
+	char* temp = new char[8000] {""}; // t[0]='\0'
+	char* m = new char[strlen(st) + 1];
+	char* start = m;
+	strcpy_s(m, strlen(st) + 1, st);
+	while (strstr(m, _old) != nullptr)
+	{
+		char* p = strstr(m, _old);
+		strncat_s(temp, 8000, m, p-m);
+		strcat_s(temp, 8000, _new);
+		m = p + strlen(_old);
+	}
+	strcat_s(temp, 8000, m);
+
+	char* res = new char[strlen(temp) + 1];
+	strcpy_s(res, strlen(temp) + 1, temp);
+	delete temp;
+	delete start;
+	return res;
+}
+
+
+int maxLengthWord(const char* st)
+{
+	int i = 0;
+	int count = 0;
+	int maxLen = 0;
+	while (st[i] != '\0')
+	{
+		if (st[i] != ' ')
+		{
+			count++;
+		}
+		else
+		{
+			if (count > maxLen)
+			{
+				maxLen = count;	
+			}
+			count = 0;
+		}
+		i++;
+	}
+	return maxLen;
+}
+
+char* maxWord(const char* st)
+{
+	int i = 0;
+	int count = 0;
+	int maxLen = 0;
+	char* word = nullptr;
+	while (st[i] != '\0')
+	{
+		if (st[i] != ' ')
+		{
+			count++;
+		}
+		else
+		{
+			if (count > maxLen)
+			{
+				maxLen = count;
+				delete[] word;
+				word = new char[count + 1];
+				strncpy_s(word, count + 1, st + i - count, count);
+				word[count] = '\0';
+			}
+			count = 0;
+		}
+		i++;
+	}
+	return word;
+}
+
+char* normalization(const char* st)
+{
+
+}
