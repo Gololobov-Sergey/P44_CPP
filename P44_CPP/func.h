@@ -487,9 +487,9 @@ char* deleteSymbol(const char* st, int pos)
 	{
 		t[i] = st[i];
 	}
-	for (size_t i = pos + 1 ; i < len+1; i++)
+	for (size_t i = pos + 1; i < len + 1; i++)
 	{
-		t[i-1] = st[i];
+		t[i - 1] = st[i];
 	}
 	return t;
 }
@@ -506,9 +506,9 @@ char* deleteAllSymbol(const char* st, char symbol)
 
 	char* t = new char[len + 1 - count];
 	int k = 0;
-	for (size_t i = 0; i <= len+1; i++)
+	for (size_t i = 0; i <= len + 1; i++)
 	{
-		if (st[i] != symbol) 
+		if (st[i] != symbol)
 		{
 			t[k++] = st[i];
 		}
@@ -540,7 +540,7 @@ char* replace_str(const char* st, const char* _old, const char* _new)
 	while (strstr(m, _old) != nullptr)
 	{
 		char* p = strstr(m, _old);
-		strncat_s(temp, 8000, m, p-m);
+		strncat_s(temp, 8000, m, p - m);
 		strcat_s(temp, 8000, _new);
 		m = p + strlen(_old);
 	}
@@ -569,7 +569,7 @@ int maxLengthWord(const char* st)
 		{
 			if (count > maxLen)
 			{
-				maxLen = count;	
+				maxLen = count;
 			}
 			count = 0;
 		}
@@ -609,5 +609,153 @@ char* maxWord(const char* st)
 
 char* normalization(const char* st)
 {
+	return nullptr;
+}
 
+template<class T>
+void createArray2D(T**& arr, int row, int col)
+{
+	arr = new int* [row];
+	for (size_t i = 0; i < row; i++)
+	{
+		arr[i] = new int[col];
+	}
+}
+
+template<class T>
+T** createArray2D(int row, int col)
+{
+	T** temp = nullptr;
+	createArray2D(temp, row, col);
+	return temp;
+}
+
+
+void fillArray2D(int** arr, int row, int col)
+{
+	for (size_t i = 0; i < row; i++)
+	{
+		for (size_t j = 0; j < col; j++)
+		{
+			arr[i][j] = rand() % 5;
+		}
+	}
+}
+
+template<class T>
+void printArray2D(T** arr, int row, int col)
+{
+	for (size_t i = 0; i < row; i++)
+	{
+		for (size_t j = 0; j < col; j++)
+		{
+			cout << arr[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+
+
+template<class T>
+void deleteArray2D(T**& arr, int row)
+{
+	for (size_t i = 0; i < row; i++)
+	{
+		delete[] arr[i];
+	}
+	delete[] arr;
+	arr = nullptr;
+}
+
+template<class T>
+void addRowArray2D(T**& arr, int& row, int col)
+{
+	T** temp = new T * [row + 1];
+	for (size_t i = 0; i < row; i++)
+	{
+		temp[i] = arr[i];
+	}
+	temp[row] = new T[col]{ 0 };
+	row++;
+	delete[] arr;
+	arr = temp;
+}
+
+template<class T>
+void delRowArray2D(T**& arr, int& row, int col)
+{
+	T** newArr = new T * [row - 1];
+	for (size_t i = 0; i < row - 1; i++)
+	{
+		newArr[i] = arr[i];
+	}
+	delete[] arr[row-1];
+	row--;
+	delete[] arr;
+	arr = newArr;
+
+}
+
+template<class T>
+void addRowPosArray2D(T**& arr, int& row, int col, int index)
+{
+	T** temp = new T * [row + 1];
+	for (size_t i = 0; i < index; i++)
+	{
+		temp[i] = arr[i];
+	}
+	temp[index] = new T[col]{ 0 };
+	for (size_t i = index; i < row; i++)
+	{
+		temp[i + 1] = arr[i];
+	}
+	row++;
+	delete[] arr;
+	arr = temp;
+}
+
+
+template<class T>
+void delRowPosArray2D(T**& arr, int& row, int index)
+{
+	T** newArr = new T * [row - 1];
+	for (size_t i = 0; i < index; i++)
+	{
+		newArr[i] = arr[i];
+	}
+	delete[] arr[index];
+	for (size_t i = index + 1; i < row; i++)
+	{
+		newArr[i - 1] = arr[i];
+	}
+	row--;
+	delete[] arr;
+	arr = newArr;
+}
+
+
+void delZeroRow(int**& arr, int& row, int col)
+{
+	for (size_t i = 0; i < row; i++)
+	{
+		if (findArray(arr[i], col, 0) != -1) 
+		{
+			delRowPosArray2D(arr, row, i--);
+		}
+	}
+}
+
+void transformMatrix(int**& arr, int& row, int& col)
+{
+	int** temp = createArray2D<int>(col, row);
+	for (size_t i = 0; i < row; i++)
+	{
+		for (size_t j = 0; j < col; j++)
+		{
+			temp[j][i] = arr[i][j];
+		}
+	}
+	deleteArray2D(arr, row);
+	swap(row, col);
+	arr = temp;
 }

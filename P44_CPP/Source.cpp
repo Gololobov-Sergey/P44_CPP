@@ -21,17 +21,47 @@ int main()
 	srand(time(0));
 
 
+	//11.06.2025
+
+	int row = 8, col = 4;
+	int** p = nullptr;
+	createArray2D(p, row, col);
+	fillArray2D(p, row, col);
+	printArray2D(p, row, col);
+
+
+	cout << endl;
+	transformMatrix(p, row, col);
+	//delZeroRow(p, row, col);
+	printArray2D(p, row, col);
+
+	//cout << *(*(p + 1) + 1) << endl; // *(*(p + i) + j) = p[i][j]
+	//cout << p[1][1] << endl;
+
+	//cout << endl;
+	//addRowPosArray2D(p, row, col, 2);
+	////addRowArray2D(p, row, col);
+	//printArray2D(p, row, col);
+
+	////delRowArray2D(p, row, col);
+	//delRowPosArray2D(p, row, 2);
+	//cout << endl;
+	//printArray2D(p, row, col);
+
+
+	deleteArray2D(p, row);
+
 	//cout << countWords("   mama   v  myla ramu  ") << endl; // 3
 
-	cout << replace_str("C++ C# SQL C++ HTML", "C++", "Python") << endl; //Python C# SQL Python
+	//cout << replace_str("C++ C# SQL C++ HTML", "C++", "Python") << endl; //Python C# SQL Python
 
-	cout << replace_str("C++ C# SQL C++ HTML", "C++", "") << endl; //" C# SQL  HTML"
+	//cout << replace_str("C++ C# SQL C++ HTML", "C++", "") << endl; //" C# SQL  HTML"
 
-	cout << maxLengthWord("Appends at1111111111 most count characters from the character array pointed") << endl;
+	//cout << maxLengthWord("Appends at1111111111 most count characters from the character array pointed") << endl;
 
-	cout << maxWord("Appends at1111111111 most count characters from the character array pointed") << endl;
+	//cout << maxWord("Appends at1111111111 most count characters from the character array pointed") << endl;
 
-	cout << normalization("  mama    myla    ramu    ") << endl;
+	//cout << normalization("  mama    myla    ramu    ") << endl;
 
 
 	
