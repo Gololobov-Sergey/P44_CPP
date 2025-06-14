@@ -7,9 +7,12 @@
 
 #include"Timer.h"
 #include"func.h"
+#include"myStruct.h"
 
 
 using namespace std;
+
+
 
 
 
@@ -20,20 +23,86 @@ int main()
 	cout.setf(ios::boolalpha);
 	srand(time(0));
 
+	//14.06.2025
+
+	Date d = { 4,6,2025 };
+	d.print();
+	cout << d.to_string() << endl;
+
+	/*Point p;
+	p.print();
+
+
+	Human h;
+	h.birthDay.day = 20;*/
+
+
+
+	/*Point p;
+	p.x = 12;
+	p.y = 10;
+	p.name = 'A';
+
+	Point p1 = { 13, 34, 'B' };
+
+	printPoint(p);
+	printPoint(p1);
+
+
+	Point p2[3] = { {2,4,'C'}, 5,8,'D', 2,6,'E' };
+	for (size_t i = 0; i < 3; i++)
+	{
+		printPoint(p2[i]);
+	}*/
+
+	const int size = 10;
+	Point p[size];
+	for (size_t i = 0; i < size; i++)
+	{
+		p[i].x = rand() % 10;
+		p[i].y = 0; // rand() % 10;
+		p[i].name = 'A' + i;
+
+		p[i].print();
+	}
+	double maxLen = 0;
+	Point p1, p2;
+	for (size_t i = 0; i < size - 1; i++)
+	{
+		for (size_t j = i + 1; j < size; j++)
+		{
+			double len = len2Point(p[i], p[j]);
+			if (len > maxLen)
+			{
+				maxLen = len;
+				p1 = p[i];
+				p2 = p[j];
+			}
+		}
+	}
+	cout << endl;
+	p1.print();
+	p2.print();
+
+
+
+	Point* p = new Point[10];
+
+
 
 	//11.06.2025
 
-	int row = 8, col = 4;
-	int** p = nullptr;
-	createArray2D(p, row, col);
-	fillArray2D(p, row, col);
-	printArray2D(p, row, col);
+	//int row = 8, col = 4;
+	//int** p = nullptr;
+	//createArray2D(p, row, col);
+	//fillArray2D(p, row, col);
+	//printArray2D(p, row, col);
 
 
-	cout << endl;
-	transformMatrix(p, row, col);
-	//delZeroRow(p, row, col);
-	printArray2D(p, row, col);
+	//cout << endl;
+	//transformMatrix(p, row, col);
+	////delZeroRow(p, row, col);
+	//printArray2D(p, row, col);
 
 	//cout << *(*(p + 1) + 1) << endl; // *(*(p + i) + j) = p[i][j]
 	//cout << p[1][1] << endl;
@@ -49,7 +118,7 @@ int main()
 	//printArray2D(p, row, col);
 
 
-	deleteArray2D(p, row);
+	//deleteArray2D(p, row);
 
 	//cout << countWords("   mama   v  myla ramu  ") << endl; // 3
 
@@ -64,7 +133,7 @@ int main()
 	//cout << normalization("  mama    myla    ramu    ") << endl;
 
 
-	
+
 
 
 	//04.06.2025
