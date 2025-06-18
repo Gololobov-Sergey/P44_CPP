@@ -66,3 +66,36 @@ struct Human
 	char* name;
 	Date birthDay;
 };
+
+
+struct Engine
+{
+	int cilinder = 4;
+
+	void start()
+	{
+		cout << "Engine start" << endl;
+	}
+
+	void stop()
+	{
+		cout << "Engine stop" << endl;
+	}
+};
+
+struct Car
+{
+	Engine engine;
+
+	void move()
+	{
+		engine.start();
+		cout << "Car move" << endl;
+		engine.stop();
+	}
+
+	void beep()
+	{
+		cout << "Beep beeeep" << endl;
+	}
+};

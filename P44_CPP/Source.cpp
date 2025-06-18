@@ -8,6 +8,7 @@
 #include"Timer.h"
 #include"func.h"
 #include"myStruct.h"
+#include "Menu.h"
 
 
 using namespace std;
@@ -23,11 +24,23 @@ int main()
 	cout.setf(ios::boolalpha);
 	srand(time(0));
 
+	//18.06.2025
+
+
+	int c = Menu::select_vertical({ "Add", "Edit", "Delete", "Exit" }, HorizontalAlignment::Center);
+
+
+
+
+	/*Car car;
+	car.move();
+	car.beep();*/
+
 	//14.06.2025
 
-	Date d = { 4,6,2025 };
+	/*Date d = { 4,6,2025 };
 	d.print();
-	cout << d.to_string() << endl;
+	cout << d.to_string() << endl;*/
 
 	/*Point p;
 	p.print();
@@ -55,38 +68,38 @@ int main()
 		printPoint(p2[i]);
 	}*/
 
-	const int size = 10;
-	Point p[size];
-	for (size_t i = 0; i < size; i++)
-	{
-		p[i].x = rand() % 10;
-		p[i].y = 0; // rand() % 10;
-		p[i].name = 'A' + i;
+	//const int size = 10;
+	//Point p[size];
+	//for (size_t i = 0; i < size; i++)
+	//{
+	//	p[i].x = rand() % 10;
+	//	p[i].y = 0; // rand() % 10;
+	//	p[i].name = 'A' + i;
 
-		p[i].print();
-	}
-	double maxLen = 0;
-	Point p1, p2;
-	for (size_t i = 0; i < size - 1; i++)
-	{
-		for (size_t j = i + 1; j < size; j++)
-		{
-			double len = len2Point(p[i], p[j]);
-			if (len > maxLen)
-			{
-				maxLen = len;
-				p1 = p[i];
-				p2 = p[j];
-			}
-		}
-	}
-	cout << endl;
-	p1.print();
-	p2.print();
+	//	p[i].print();
+	//}
+	//double maxLen = 0;
+	//Point p1, p2;
+	//for (size_t i = 0; i < size - 1; i++)
+	//{
+	//	for (size_t j = i + 1; j < size; j++)
+	//	{
+	//		double len = len2Point(p[i], p[j]);
+	//		if (len > maxLen)
+	//		{
+	//			maxLen = len;
+	//			p1 = p[i];
+	//			p2 = p[j];
+	//		}
+	//	}
+	//}
+	//cout << endl;
+	//p1.print();
+	//p2.print();
 
 
 
-	Point* p = new Point[10];
+	//Point* p = new Point[10];
 
 
 
